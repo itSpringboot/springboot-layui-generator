@@ -34,7 +34,9 @@ Mapper、model和Mapper.xml文件使用mybatis-generator生成,在我的另一�
 
 cmd切换到springboot-layui-generator项目目录，安装mvn相关依赖(以下为使用案例,具体路径以本地为准)
  >   cd D:\work\springboot-layui-generator
+ 
  >   mvn clean install
+ 
  >   mvn spring-boot:run
 
 到此生成完毕，就是这么简单
