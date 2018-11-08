@@ -1,0 +1,30 @@
+crudgen:
+  project:
+    java-project-path: F:\workspace\demo #生成的代码所在的工程路径 demo为工程名称
+    view-project-path: F:\workspace\demo #视图生成所在的工程路径 demo为工程名称
+  template-path: /templates/layui  #模板路径  默认为本项目 resources/templates/layui下
+  controller-enabled: true #是否生成controller
+  service-enabled: true #是否生成service服务
+  view-enabled: true #是否生成视图 默认thymeleaf html
+  edit-view-enabled: true #是否生成编辑视图 默认thymeleaf html
+  model-attributes:
+    - model-name: RssInsideSuper #model名称 支持配置多张表 参考yml数组配置
+      extend-attr-map: #自定义扩展属性
+        author: wubing
+      java-attributes:
+        model-package: com.example.data #model包路径
+        service-package: com.example.service #service包路径
+        controller-package: com.example.controller #controller包路径
+        controller-request-mapping: /rssinsidesuper #controller requestMapping路径
+      view-attributes:
+              view-path: jcy/rssinsidesuper #html等视图文件相对路径
+#    - model-name: Tuser #model名称 支持配置多张表 参考yml数组配置
+#      extend-attr-map: #自定义扩展属性
+#        author: wubing
+#      java-attributes:
+#        model-package: com.example.data #model包路径
+#        service-package: com.example.service #service包路径
+#        controller-package: com.example.controller #controller包路径
+#        controller-request-mapping: /tuser #controller requestMapping路径
+#      view-attributes:
+#              view-path: jcy/tuser #html等视图文件相对路径
