@@ -1,4 +1,4 @@
-package com.jcy.factory;
+package com.jcy;
 
 import com.jcy.factory.generator.GeneratorHelper;
 import org.springframework.beans.factory.annotation.Autowired;
