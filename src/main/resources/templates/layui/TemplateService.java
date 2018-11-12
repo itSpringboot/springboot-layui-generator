@@ -1,6 +1,6 @@
 package ${javaAttribute.service.packageName};
 
-import com.example.commonweb.service.AbstractService;
+import com.inspur.common.web.service.AbstractService;
 import ${javaAttribute.model.fullName};
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;

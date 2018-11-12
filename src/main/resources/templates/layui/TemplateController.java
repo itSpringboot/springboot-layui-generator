@@ -1,10 +1,10 @@
 package ${javaAttribute.controller.packageName};
 
-import com.example.commonweb.model.Page;
-import com.example.commonweb.model.RequestPage;
-import com.example.commonweb.model.ResponseResult;
-import com.example.commonweb.service.AbstractService;
-import com.example.commonweb.web.BaseControllerImpl;
+import com.inspur.common.web.model.Page;
+import com.inspur.common.web.model.RequestPage;
+import com.inspur.common.web.model.ResponseResult;
+import com.inspur.common.web.service.AbstractService;
+import com.inspur.common.web.controller.BaseControllerImpl;
 import ${javaAttribute.model.fullName};
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
