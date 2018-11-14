@@ -1,7 +1,6 @@
-<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<!DOCTYPE>
 
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
+<html>
 <head>
     <meta charset="utf-8">
     <title>${modelName?uncap_first}列表</title>
@@ -18,15 +17,15 @@
 </head>
 <body>
 
-<form class="layui-form layui-form-pane1" action="/${modelName?uncap_first}/save" method="post" name="f" lay-filter="first">
+<form class="layui-form layui-form-pane1" action="/${modelName?uncap_first}/save" method="post" id="${modelName?uncap_first}Form" name="${modelName?uncap_first}" lay-filter="first">
     <#list columns as column>
         <#if (column_index == 0)>
-        <input type="hidden" name="${column.columnName }" th:value="${r'${data?.'}${column.columnName }}">
+        <input type="hidden" name="${column.columnName }">
         <#else>
         <div class="layui-form-item">
             <label class="layui-form-label">${column.columnDesc }</label>
             <div class="layui-input-inline">
-                <input type="text" name="${column.columnName }" th:value="${r'${data?.'}${column.columnName }}" required placeholder="请输入${column.columnDesc }" autocomplete="off" class="layui-input">
+                <input type="text" name="${column.columnName }" required placeholder="请输入${column.columnDesc }" autocomplete="off" class="layui-input">
             </div>
         </div>
         </#if>
@@ -56,7 +55,18 @@
                 }
             }
         });
-
+        $.ajax({
+            url: "/${modelName?uncap_first}/get",
+            <#list columns as column>
+                <#if (column_index == 0)>
+            data: {"${column.columnName }":getQueryVariable("${column.columnName }")},
+                </#if>
+            </#list>
+            async:false,
+            success: function(data){
+                form.val('first', data);
+            }
+        });
         //初始赋值
         form.val('first', {});
 
@@ -77,9 +87,24 @@
         //监听提交
         form.on('submit(*)', function(data){
             layer.confirm('是否提交', {icon: 1, title:'提示'}, function(index){
-                document.f.submit();
-                layer.close(index);
-                return true;
+                var formData = $('#${modelName?uncap_first}Form').serializeObject();
+                $.ajax({
+                    type:"post",
+                    url: "/${modelName?uncap_first}/save",
+                    async:false,
+                    data:formData,
+                    success:function(data){
+                        if(data.success==true){
+                            window.location.href = '/admin/jcy/${modelName?uncap_first}';
+                        }else{
+                            layer.msg("保存出错");
+                            return false;
+                        }
+
+                    },error:function(e,ee,eee){
+                        console.log(eee);
+                    }
+                });
             });
             return false;
         });

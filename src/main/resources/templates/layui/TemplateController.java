@@ -1,23 +1,20 @@
 package ${javaAttribute.controller.packageName};
 
+import com.inspur.common.util.UUIDutil;
+import com.inspur.common.web.controller.BaseControllerImpl;
 import com.inspur.common.web.model.Page;
 import com.inspur.common.web.model.RequestPage;
 import com.inspur.common.web.model.ResponseResult;
 import com.inspur.common.web.service.AbstractService;
-import com.inspur.common.web.controller.BaseControllerImpl;
 import ${javaAttribute.model.fullName};
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.UUID;
 
 /**
  * ${javaAttribute.controller.name}
  */
-@Controller
+@RestController
 @RequestMapping(value = "${controllerAttribute.controllerRequestMapping}")
 public class ${javaAttribute.controller.name} extends BaseControllerImpl<${javaAttribute.model.name}, ${javaAttribute.primaryKeyType}>{
 
@@ -27,9 +24,7 @@ public class ${javaAttribute.controller.name} extends BaseControllerImpl<${javaA
 	/**
 	 * 分页查询列表数据
 	 */
-	@Override
 	@RequestMapping("/query")
-	@ResponseBody
 	public Page<${javaAttribute.model.name}> query(@Validated @ModelAttribute RequestPage requestPage, @Validated @ModelAttribute ${javaAttribute.model.name} ${javaAttribute.model.parametterName}) {
 		return super.query(requestPage, ${javaAttribute.model.parametterName});
 	}
@@ -37,38 +32,29 @@ public class ${javaAttribute.controller.name} extends BaseControllerImpl<${javaA
 	 * 根据主键查询数据
 	 */
 	@RequestMapping("/get")
-	@ResponseBody
-	public ${javaAttribute.model.name} get(@RequestParam(value="id") ${javaAttribute.primaryKeyType} ${javaAttribute.primaryKey} ) {
+	public ${javaAttribute.model.name} get(@RequestParam(value="${javaAttribute.primaryKey}") ${javaAttribute.primaryKeyType} ${javaAttribute.primaryKey} ) {
 			return super.get(${javaAttribute.primaryKey});
-	}
-	/**
-	 * 编辑操作
-	 */
-	@RequestMapping("/edit/{${javaAttribute.primaryKey}}")
-	public String edit(@PathVariable ${javaAttribute.primaryKeyType} ${javaAttribute.primaryKey} ,ModelMap map) {
-			map.addAttribute("data", super.get(id));
-			return "jcy${controllerAttribute.controllerRequestMapping}edit";
 	}
 	/**
 	 * 根据主键删除数据
 	 */
-	@RequestMapping("/delete/{${javaAttribute.primaryKey}}")
-	@ResponseBody
-	public ResponseResult delete(@PathVariable ${javaAttribute.primaryKeyType} ${javaAttribute.primaryKey} ) {
+	@RequestMapping("/delete")
+	public ResponseResult delete(@RequestParam(value="${javaAttribute.primaryKey}") ${javaAttribute.primaryKey} ) {
 			return super.delete(${javaAttribute.primaryKey});
 	}
 
 	/**
 	 *保存操作
 	 */
-	@RequestMapping(value = "/save", produces = {"application/json;charset=UTF-8"})
-	public String save(@Validated @ModelAttribute ${javaAttribute.model.name} ${javaAttribute.model.parametterName}){
+	@RequestMapping(value = "/save")
+	public ResponseResult save(@Validated @ModelAttribute ${javaAttribute.model.name} ${javaAttribute.model.parametterName}){
+		ResponseResult responseResult;
 		if(${javaAttribute.model.parametterName}.getId()==null||"".equals(${javaAttribute.model.parametterName}.getId())){
-			${javaAttribute.model.parametterName}.setId(UUID.randomUUID().toString().replace("-",""));
-			super.create(${javaAttribute.model.parametterName});
+			${javaAttribute.model.parametterName}.setId(UUIDutil.UUID());
+			responseResult = super.create(${javaAttribute.model.parametterName});
 		}else{
-			super.update(${javaAttribute.model.parametterName});
+			responseResult = super.update(${javaAttribute.model.parametterName});
 		}
-		return "redirect:/admin/jcy${controllerAttribute.controllerRequestMapping}";
+		return responseResult;
 	}
 }

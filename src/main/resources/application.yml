@@ -8,23 +8,23 @@ crudgen:
   view-enabled: true #是否生成视图 默认thymeleaf html
   edit-view-enabled: true #是否生成编辑视图 默认thymeleaf html
   model-attributes:
-    - model-name: RssInsideSuper #model名称 支持配置多张表 参考yml数组配置
+#    - model-name: RssInsideSuper #model名称 支持配置多张表 参考yml数组配置
+#      extend-attr-map: #自定义扩展属性
+#        author: wubing
+#      java-attributes:
+#        model-package: com.inspur.data #model包路径
+#        service-package: com.inspur.service #service包路径
+#        controller-package: com.inspur.controller #controller包路径
+#        controller-request-mapping: /rssinsidesuper #controller requestMapping路径
+#      view-attributes:
+#              view-path: jcy/rssinsidesuper #html等视图文件相对路径
+    - model-name: Tuser #model名称 支持配置多张表 参考yml数组配置
       extend-attr-map: #自定义扩展属性
         author: wubing
       java-attributes:
         model-package: com.inspur.data #model包路径
         service-package: com.inspur.service #service包路径
         controller-package: com.inspur.controller #controller包路径
-        controller-request-mapping: /rssinsidesuper #controller requestMapping路径
+        controller-request-mapping: /tuser #controller requestMapping路径
       view-attributes:
-              view-path: jcy/rssinsidesuper #html等视图文件相对路径
-#    - model-name: Tuser #model名称 支持配置多张表 参考yml数组配置
-#      extend-attr-map: #自定义扩展属性
-#        author: wubing
-#      java-attributes:
-#        model-package: com.example.data #model包路径
-#        service-package: com.example.service #service包路径
-#        controller-package: com.example.controller #controller包路径
-#        controller-request-mapping: /tuser #controller requestMapping路径
-#      view-attributes:
-#              view-path: jcy/tuser #html等视图文件相对路径
+              view-path: jcy/tuser #html等视图文件相对路径

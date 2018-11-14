@@ -74,7 +74,7 @@
                     } else if(data.length > 1){
                         layer.msg('只能同时编辑一个');
                     } else {
-                        window.location.href = '/${modelName?uncap_first}/edit/' + data.id;
+                        window.location.href = '/admin/jcy/${modelName?uncap_first}edit?id=' + data[0].id;
                     }
                     break;
                 case 'delete':
@@ -83,7 +83,7 @@
                     } else if(data.length > 1){
                         layer.msg('只能同时删除一个');
                     } else {
-                        $.ajax({url:"/${modelName?uncap_first}/delete",data:{"id":data.id},async:false});
+                        $.ajax({url:"/${modelName?uncap_first}/delete",data:{"id":data[0].id},async:false});
                         table.reload('${modelName?uncap_first}_id');
                     }
                     break;
@@ -98,12 +98,12 @@
                 layer.msg('查看操作');
             } else if(layEvent === 'del'){
                 layer.confirm('真的删除么', function(index){
-                    $.ajax({url:'/rssinsidesuper/delete/' + data.id,async:false});
+                    $.ajax({url:'/${modelName?uncap_first}/delete/' + data.id,async:false});
                     table.reload('${modelName?uncap_first}_id');
                     layer.close(index);
                 });
             } else if(layEvent === 'edit'){
-                window.location.href = '/${modelName?uncap_first}/edit/' + data.id;
+                window.location.href = '/admin/jcy/${modelName?uncap_first}edit?id=' + data.id;
             }
         });
     });
