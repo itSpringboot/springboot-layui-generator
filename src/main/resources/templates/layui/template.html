@@ -98,7 +98,7 @@
                 layer.msg('查看操作');
             } else if(layEvent === 'del'){
                 layer.confirm('真的删除么', function(index){
-                    $.ajax({url:'/${modelName?uncap_first}/delete/' + data.id,async:false});
+                    $.ajax({url:'/${modelName?uncap_first}/delete',data:{"id":data.id},async:false});
                     table.reload('${modelName?uncap_first}_id');
                     layer.close(index);
                 });
