@@ -17,7 +17,7 @@ crudgen:
 #        controller-package: com.inspur.controller #controller包路径
 #        controller-request-mapping: /rssinsidesuper #controller requestMapping路径
 #      view-attributes:
-#              view-path: jcy/rssinsidesuper #html等视图文件相对路径
+#        view-path: jcy/rssinsidesuper #html等视图文件相对路径
     - model-name: Tuser #model名称 支持配置多张表 参考yml数组配置
       extend-attr-map: #自定义扩展属性
         author: wubing
@@ -27,4 +27,4 @@ crudgen:
         controller-package: com.inspur.controller #controller包路径
         controller-request-mapping: /tuser #controller requestMapping路径
       view-attributes:
-              view-path: jcy/tuser #html等视图文件相对路径
+        view-path: jcy/tuser #html等视图文件相对路径

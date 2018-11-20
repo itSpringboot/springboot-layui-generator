@@ -1,15 +1,11 @@
 package ${javaAttribute.controller.packageName};
 
-import com.inspur.common.util.UUIDutil;
 import com.inspur.common.web.controller.BaseControllerImpl;
-import com.inspur.common.web.model.Page;
-import com.inspur.common.web.model.RequestPage;
-import com.inspur.common.web.model.ResponseResult;
 import com.inspur.common.web.service.AbstractService;
 import ${javaAttribute.model.fullName};
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
  * ${javaAttribute.controller.name}

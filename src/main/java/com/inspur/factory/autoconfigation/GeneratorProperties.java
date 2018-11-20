@@ -65,9 +65,6 @@ public class GeneratorProperties {
 	/**
 	* @ClassName: Project
 	* @Description: 项目属性  前端项目路径和后端项目路径
-	* @author  hyluan
-	* @date 2018年1月5日 下午1:25:20
-	* @Copyright: Copyright (c) 2017 wisedu
 	 */
 	@Setter
 	@Getter

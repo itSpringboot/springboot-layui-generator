@@ -72,20 +72,7 @@ public class ReflectionUtils {
 		return null;
 	}
 	
-	/**
-	 * 
-	 * @Function: ReflectionUtils::getAllDeclaredField
-	 * @Description: ��ø�������и�����ֶΰ���˽���ֶ�
-	 * @param object
-	 * @return
-	 * @version: v1.0.0
-	 * @author: Administrator
-	 * @date: 2015��4��3�� ����10:04:07 
-	 *
-	 * Modification History:
-	 * Date         Author          Version            Description
-	 *-------------------------------------------------------------
-	 */
+
 	public static Field[] getAllDeclaredField(Object object) {
 		List<Field> l = new ArrayList<Field>();
 		for (Class superClass = object.getClass(); superClass != Object.class; superClass = superClass
